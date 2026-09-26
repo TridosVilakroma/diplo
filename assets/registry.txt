@@ -1,0 +1,2 @@
+#This is a record of all assets in the game project. Large files cannot be tracked with GitHub,
+#so this structure should help share and reimport files into the expected path for the project.
