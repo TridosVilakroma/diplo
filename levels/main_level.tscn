@@ -1,3 +1,10 @@
 [gd_scene format=3 uid="uid://bds6kuyox1grk"]
 
+[ext_resource type="Texture2D" uid="uid://dstkt1otyfb6t" path="res://assets/background.png" id="1_ilwad"]
+
 [node name="Main Level" type="Node2D" unique_id=1431917723]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1654444860]
+position = Vector2(582.25, 324.5)
+scale = Vector2(2.0621717, 1.9114286)
+texture = ExtResource("1_ilwad")
