@@ -1,10 +1,21 @@
 [gd_scene format=3 uid="uid://bds6kuyox1grk"]
 
-[ext_resource type="Texture2D" uid="uid://dstkt1otyfb6t" path="res://assets/background.png" id="1_ilwad"]
+[ext_resource type="Texture2D" uid="uid://b8l3adxb8nwkx" path="res://assets/grass.png" id="1_0vhbo"]
+[ext_resource type="Texture2D" uid="uid://dm3j3e5p4vqvp" path="res://assets/shop.png" id="2_ldao0"]
+[ext_resource type="Texture2D" uid="uid://cambu6k5pb2e6" path="res://assets/Sprite-0001.png" id="3_ldao0"]
 
 [node name="Main Level" type="Node2D" unique_id=1431917723]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1654444860]
-position = Vector2(582.25, 324.5)
-scale = Vector2(2.0621717, 1.9114286)
-texture = ExtResource("1_ilwad")
+position = Vector2(568.00006, 301)
+scale = Vector2(1.0425442, 1.1503297)
+texture = ExtResource("1_0vhbo")
+
+[node name="shop" type="Sprite2D" parent="." unique_id=625470126]
+position = Vector2(657, 269)
+texture = ExtResource("2_ldao0")
+
+[node name="Sprite0001" type="Sprite2D" parent="." unique_id=849136553]
+position = Vector2(625, 281)
+scale = Vector2(2.65, 2.65)
+texture = ExtResource("3_ldao0")
