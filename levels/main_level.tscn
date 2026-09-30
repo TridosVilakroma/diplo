@@ -2,7 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://b8l3adxb8nwkx" path="res://assets/grass.png" id="1_0vhbo"]
 [ext_resource type="Texture2D" uid="uid://dm3j3e5p4vqvp" path="res://assets/shop.png" id="2_ldao0"]
+[ext_resource type="Script" uid="uid://cbi77yk871pjm" path="res://levels/character_body_2d.gd" id="3_55n5f"]
 [ext_resource type="Texture2D" uid="uid://cambu6k5pb2e6" path="res://assets/Sprite-0001.png" id="3_ldao0"]
+
+[sub_resource type="ConcavePolygonShape2D" id="ConcavePolygonShape2D_whpc1"]
+segments = PackedVector2Array(409, 119, 409, 0, 0, 0, 409, 0, 0, 0, -1, 399)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p12po"]
+radius = 7.0
+height = 18.0
 
 [node name="Main Level" type="Node2D" unique_id=1431917723]
 
@@ -15,7 +23,27 @@ texture = ExtResource("1_0vhbo")
 position = Vector2(657, 269)
 texture = ExtResource("2_ldao0")
 
-[node name="Sprite0001" type="Sprite2D" parent="." unique_id=849136553]
+[node name="StaticBody2D" type="StaticBody2D" parent="shop" unique_id=1744325503]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shop/StaticBody2D" unique_id=2038748297]
+position = Vector2(-419, -197)
+shape = SubResource("ConcavePolygonShape2D_whpc1")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1668502881]
+position = Vector2(-1, 16)
+collision_layer = 0
+collision_mask = 16
+motion_mode = 1
+script = ExtResource("3_55n5f")
+
+[node name="Sprite0001" type="Sprite2D" parent="CharacterBody2D" unique_id=849136553]
 position = Vector2(625, 281)
 scale = Vector2(2.65, 2.65)
 texture = ExtResource("3_ldao0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=653432525]
+position = Vector2(626, 295)
+shape = SubResource("CapsuleShape2D_p12po")
+debug_color = Color(0.8290079, 0.28662926, 0.68870634, 0.41960785)

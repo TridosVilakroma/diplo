@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://djfcppdeilxa5"]
+
+[ext_resource type="Script" uid="uid://bia2n7ofadquk" path="res://scenes/title_screen.gd" id="1_sa3yf"]
+[ext_resource type="Texture2D" uid="uid://cpt84oanugwfr" path="res://assets/title_screen_background_1.png" id="2_s4lrb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whpc1"]
+bg_color = Color(0.5254902, 0.21176471, 0.16470589, 0.69411767)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="FontVariation" id="FontVariation_p12po"]
+
+[node name="TitleScreen" type="Control" unique_id=528763970]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sa3yf")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1771839188]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s4lrb")
+expand_mode = 1
+
+[node name="title_panel" type="Panel" parent="." unique_id=215350088]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025173612
+anchor_top = 0.040123455
+anchor_right = 0.4670139
+anchor_bottom = 0.16358025
+theme_override_styles/panel = SubResource("StyleBoxFlat_whpc1")
+metadata/_edit_use_anchors_ = true
+
+[node name="title_text" type="RichTextLabel" parent="title_panel" unique_id=17782750]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.98911625, 0.91609323, 0.73729426, 1)
+theme_override_fonts/bold_font = SubResource("FontVariation_p12po")
+theme_override_font_sizes/bold_font_size = 50
+bbcode_enabled = true
+text = "[b]Charisma in Chrono"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="press_start_text" type="RichTextLabel" parent="." unique_id=1711294745]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8402778
+anchor_top = 0.7731482
+anchor_right = 1.7361112
+anchor_bottom = 1.800926
+offset_top = -3.0517578e-05
+theme_override_colors/default_color = Color(0.627451, 0.6666667, 0.5686275, 1)
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "[b]Press
+Start"
+fit_content = true
+metadata/_edit_use_anchors_ = true

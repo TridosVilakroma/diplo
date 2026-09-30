@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bde4nhy87kce7"]
+
+[ext_resource type="Script" uid="uid://c5htxu14iw4b" path="res://scenes/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://cpt84oanugwfr" path="res://assets/title_screen_background_1.png" id="2_t3bh0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whpc1"]
+bg_color = Color(0.5254902, 0.21176471, 0.16470589, 0.69411767)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="FontVariation" id="FontVariation_p12po"]
+
+[node name="MainMenu" type="Control" unique_id=528763970]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ekxnf")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1771839188]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_t3bh0")
+expand_mode = 1
+
+[node name="title_panel" type="Panel" parent="." unique_id=215350088]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.535
+anchor_top = 0.04
+anchor_right = 0.9782986
+anchor_bottom = 0.16512346
+theme_override_styles/panel = SubResource("StyleBoxFlat_whpc1")
+metadata/_edit_use_anchors_ = true
+
+[node name="title_text" type="RichTextLabel" parent="title_panel" unique_id=17782750]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.98911625, 0.91609323, 0.73729426, 1)
+theme_override_fonts/bold_font = SubResource("FontVariation_p12po")
+theme_override_font_sizes/bold_font_size = 50
+bbcode_enabled = true
+text = "[b]Charisma in Chrono"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="menu_items" type="VBoxContainer" parent="." unique_id=488865055]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.31100002
+anchor_bottom = 1.0
+offset_right = -358.27203
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="menu_items" unique_id=331933968]
+layout_mode = 2
