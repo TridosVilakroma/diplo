@@ -1,7 +1,6 @@
-[gd_scene format=3 uid="uid://bde4nhy87kce7"]
+[gd_scene format=3 uid="uid://ihr1feae72e7"]
 
-[ext_resource type="Script" uid="uid://c5htxu14iw4b" path="res://scenes/main_menu.gd" id="1_ekxnf"]
-[ext_resource type="Texture2D" uid="uid://cpt84oanugwfr" path="res://assets/title_screen_background_1.png" id="2_t3bh0"]
+[ext_resource type="Texture2D" uid="uid://cpt84oanugwfr" path="res://assets/title_screen_background_1.png" id="1_kqt80"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whpc1"]
 bg_color = Color(0.5254902, 0.21176471, 0.16470589, 0.69411767)
@@ -40,14 +39,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[node name="MainMenu" type="Control" unique_id=528763970]
+[node name="SettingsScene" type="Control" unique_id=528763970]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ekxnf")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1771839188]
 layout_mode = 1
@@ -56,7 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_t3bh0")
+texture = ExtResource("1_kqt80")
 expand_mode = 1
 
 [node name="title_panel" type="Panel" parent="." unique_id=215350088]
@@ -156,8 +154,3 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
 theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
 text = "Quit"
 metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="buttons_container/play_button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="buttons_container/settings_button" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="buttons_container/credit_button" to="." method="_on_credit_button_pressed"]
-[connection signal="pressed" from="buttons_container/quit_button" to="." method="_on_quit_button_pressed"]

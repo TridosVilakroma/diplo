@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bde4nhy87kce7"]
+[gd_scene format=3 uid="uid://d08nfgv55sqc7"]
 
-[ext_resource type="Script" uid="uid://c5htxu14iw4b" path="res://scenes/main_menu.gd" id="1_ekxnf"]
-[ext_resource type="Texture2D" uid="uid://cpt84oanugwfr" path="res://assets/title_screen_background_1.png" id="2_t3bh0"]
+[ext_resource type="Texture2D" uid="uid://cpt84oanugwfr" path="res://assets/title_screen_background_1.png" id="1_ma2dp"]
+[ext_resource type="Script" uid="uid://pwq4uvqxxwhq" path="res://scenes/credits_scene.gd" id="1_x5wno"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whpc1"]
 bg_color = Color(0.5254902, 0.21176471, 0.16470589, 0.69411767)
@@ -40,14 +40,21 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[node name="MainMenu" type="Control" unique_id=528763970]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p12po"]
+bg_color = Color(0.9882353, 0.8509804, 0.57254905, 0.9411765)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="CreditsScene" type="Control" unique_id=528763970]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ekxnf")
+script = ExtResource("1_x5wno")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1771839188]
 layout_mode = 1
@@ -56,7 +63,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_t3bh0")
+texture = ExtResource("1_ma2dp")
 expand_mode = 1
 
 [node name="title_panel" type="Panel" parent="." unique_id=215350088]
@@ -92,57 +99,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="play_button" type="Button" parent="buttons_container" unique_id=286529846]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.06857639
-anchor_top = 0.13580246
-anchor_right = 0.32291666
-anchor_bottom = 0.27314815
-offset_left = 1.0
-offset_top = -7.9999924
-offset_right = 1.0
-offset_bottom = -8.0
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
-theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
-text = "Play"
-metadata/_edit_use_anchors_ = true
-
-[node name="settings_button" type="Button" parent="buttons_container" unique_id=525872938]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.06944445
-anchor_top = 0.33950618
-anchor_right = 0.3237847
-anchor_bottom = 0.47685185
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
-theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
-text = "Settings"
-metadata/_edit_use_anchors_ = true
-
-[node name="credit_button" type="Button" parent="buttons_container" unique_id=442073668]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.06944445
-anchor_top = 0.5555556
-anchor_right = 0.3237847
-anchor_bottom = 0.69290125
-offset_top = -3.0517578e-05
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
-theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
-text = "Credits"
-metadata/_edit_use_anchors_ = true
-
-[node name="quit_button" type="Button" parent="buttons_container" unique_id=2023833622]
+[node name="back_button" type="Button" parent="buttons_container" unique_id=2023833622]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.06944445
@@ -154,10 +111,93 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
 theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
-text = "Quit"
+text = "Back"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="buttons_container/play_button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="buttons_container/settings_button" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="buttons_container/credit_button" to="." method="_on_credit_button_pressed"]
-[connection signal="pressed" from="buttons_container/quit_button" to="." method="_on_quit_button_pressed"]
+[node name="credit_container" type="Control" parent="." unique_id=111328753]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="credit_panel" type="Panel" parent="credit_container" unique_id=93862584]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -182.0
+offset_right = 424.0
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p12po")
+
+[node name="title" type="RichTextLabel" parent="credit_container/credit_panel" unique_id=552663106]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 61.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_font_size = 44
+bbcode_enabled = true
+text = "[b][u]Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="left_body" type="RichTextLabel" parent="credit_container/credit_panel" unique_id=730565131]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 51.0
+offset_right = -385.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[b]DEVELOPMENT[/b]
+Caleb Stockwell
+Tristan Ross
+
+[b]ART DIRECTION[/b]
+Tristan Ross
+
+[b]ART[/b]
+Tristan Ross
+Caleb Stockwell"
+horizontal_alignment = 1
+
+[node name="right_body" type="RichTextLabel" parent="credit_container/credit_panel" unique_id=1658096721]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 421.0
+offset_top = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[b]MUSIC & SOUND[/b]
+Lainey Ross
+
+[b]TOOLS[/b]
+Godot Engine 4.7
+Aseprite
+
+[b]LICENSE[/b]
+MIT License
+
+[font_size=10]© 2026 Potion Forge[/font_size]"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="buttons_container/back_button" to="." method="_on_back_button_pressed"]
