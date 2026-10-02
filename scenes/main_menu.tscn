@@ -12,6 +12,34 @@ corner_radius_bottom_left = 30
 
 [sub_resource type="FontVariation" id="FontVariation_p12po"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
+bg_color = Color(0.10980392, 0.28235295, 0.28235295, 0.8784314)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
+bg_color = Color(0.078431375, 0.21960784, 0.21960784, 0.8784314)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
+bg_color = Color(0.15773621, 0.3770392, 0.37701622, 0.8784314)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ln24"]
+bg_color = Color(0.15686275, 0.3764706, 0.3764706, 0.8784314)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [node name="MainMenu" type="Control" unique_id=528763970]
 layout_mode = 3
 anchors_preset = 15
@@ -56,13 +84,75 @@ text = "[b]Charisma in Chrono"
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="menu_items" type="VBoxContainer" parent="." unique_id=488865055]
+[node name="buttons_container" type="Control" parent="." unique_id=1058801728]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.31100002
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -358.27203
+grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureButton" type="TextureButton" parent="menu_items" unique_id=331933968]
-layout_mode = 2
+[node name="play_button" type="Button" parent="buttons_container" unique_id=286529846]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06857639
+anchor_top = 0.13580246
+anchor_right = 0.32291666
+anchor_bottom = 0.27314815
+offset_left = 1.0
+offset_top = -7.9999924
+offset_right = 1.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+text = "Play"
+metadata/_edit_use_anchors_ = true
+
+[node name="settings_button" type="Button" parent="buttons_container" unique_id=525872938]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06944445
+anchor_top = 0.33950618
+anchor_right = 0.3237847
+anchor_bottom = 0.47685185
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+text = "Settings"
+metadata/_edit_use_anchors_ = true
+
+[node name="credit_button" type="Button" parent="buttons_container" unique_id=442073668]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06944445
+anchor_top = 0.5555556
+anchor_right = 0.3237847
+anchor_bottom = 0.69290125
+offset_top = -3.0517578e-05
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+text = "Credits"
+metadata/_edit_use_anchors_ = true
+
+[node name="quit_button" type="Button" parent="buttons_container" unique_id=2023833622]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06944445
+anchor_top = 0.77160496
+anchor_right = 0.3237847
+anchor_bottom = 0.9089506
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+text = "Quit"
+metadata/_edit_use_anchors_ = true

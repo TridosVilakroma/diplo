@@ -1,11 +1,20 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
+	var _button_pause:float=0.0
+	for _button:Button in $buttons_container.get_children():
+		_button_pause+=0.15
+		_button.scale.y=0
+		_button.pivot_offset=_button.size/2
+		var anim:Tween=create_tween()
+		anim.tween_interval(_button_pause)
+		anim.tween_property(_button,"scale:y",1,.1)
+		anim.tween_property(_button,"scale:y",-1,.2)
+		anim.tween_property(_button,"scale:y",1,.2)
+	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
