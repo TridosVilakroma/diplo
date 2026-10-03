@@ -56,11 +56,13 @@ func get_save_slots_view():
 		}
 	return packed_data
 
+func save_data_exists(file:String)->bool:
+	return not save_file_read("file_"+file).is_empty()
 
 func decode_view(view:Dictionary):
 	var data:String=""
 	if not view:
-		return "No Save Data\n\nStart A New Game!"
+		return "[b]No Save Data"
 	if "gold" in view:
 		if int(view.gold)>0:
 			data+="Gold: "+ str(view.gold)+"\n"

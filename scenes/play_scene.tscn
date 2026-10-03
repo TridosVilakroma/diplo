@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://rjxoi5fobwup" path="res://scenes/play_scene.gd" id="1_wklqy"]
 [ext_resource type="Texture2D" uid="uid://cpt84oanugwfr" path="res://assets/title_screen_background_1.png" id="2_que2y"]
+[ext_resource type="Texture2D" uid="uid://brolwxplikmnn" path="res://assets/copy_icon.png" id="3_kdvgv"]
+[ext_resource type="Texture2D" uid="uid://cgsy5r1m4plw6" path="res://assets/trash_icon.png" id="4_ief5h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whpc1"]
 bg_color = Color(0.5254902, 0.21176471, 0.16470589, 0.69411767)
@@ -46,6 +48,25 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p12po"]
+bg_color = Color(0.99215686, 0.9254902, 0.74509805, 0.53333336)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdvgv"]
+bg_color = Color(0.5568628, 0.65882355, 0.5372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ief5h"]
+bg_color = Color(0.32107309, 0.40069687, 0.30586624, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btd5q"]
+bg_color = Color(0.4600225, 0.5580986, 0.4412319, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ww4kh"]
+bg_color = Color(0.99215686, 0.91764706, 0.7254902, 0.77254903)
 
 [node name="PlayScene" type="Control" unique_id=528763970]
 layout_mode = 3
@@ -216,7 +237,8 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
-[node name="modal_panel" type="Panel" parent="." unique_id=1275691777]
+[node name="file_control_modal_panel" type="Panel" parent="." unique_id=1275691777]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -224,7 +246,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="modal_panel_button" type="Button" parent="modal_panel" unique_id=1869930035]
+[node name="modal_panel_button" type="Button" parent="file_control_modal_panel" unique_id=1869930035]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -264,27 +286,224 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[b]Select a Save file
 to play"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="button_container" type="Control" parent="file_info_panel" unique_id=2115035824]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="file_control_buttons" type="Panel" parent="file_info_panel" unique_id=1572104002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 415.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p12po")
 
-[connection signal="focus_entered" from="buttons_container/file_buttons_container/file_1_button" to="." method="_on_file_1_button_focus_entered"]
-[connection signal="mouse_entered" from="buttons_container/file_buttons_container/file_1_button" to="." method="_on_file_1_button_mouse_entered"]
+[node name="start_button" type="Button" parent="file_info_panel/file_control_buttons" unique_id=1028052870]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08672087
+anchor_top = 0.16176471
+anchor_right = 0.55284554
+anchor_bottom = 0.7352941
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_kdvgv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ief5h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btd5q")
+text = "Start New Game"
+metadata/_edit_use_anchors_ = true
+
+[node name="copy_button" type="TextureButton" parent="file_info_panel/file_control_buttons" unique_id=1291235132]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 11.0
+offset_right = 271.0
+offset_bottom = 51.0
+texture_normal = ExtResource("3_kdvgv")
+stretch_mode = 4
+
+[node name="delete_button" type="TextureButton" parent="file_info_panel/file_control_buttons" unique_id=773199712]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 11.0
+offset_right = 340.0
+offset_bottom = 51.0
+texture_normal = ExtResource("4_ief5h")
+stretch_mode = 4
+
+[node name="file_select_modal" type="Panel" parent="." unique_id=1226409175]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="file_select_modal_button" type="Button" parent="file_select_modal" unique_id=620784770]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="file_select_1_button" type="Button" parent="file_select_modal" unique_id=1209256768]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10850695
+anchor_top = 0.23148148
+anchor_right = 0.3628472
+anchor_bottom = 0.36882716
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+text = "1"
+metadata/_edit_use_anchors_ = true
+
+[node name="file_select_2_button" type="Button" parent="file_select_modal" unique_id=1010257494]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23871528
+anchor_top = 0.38580248
+anchor_right = 0.49305555
+anchor_bottom = 0.5231481
+offset_bottom = 3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+text = "2"
+metadata/_edit_use_anchors_ = true
+
+[node name="file_select_3_button" type="Button" parent="file_select_modal" unique_id=2000114029]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3689236
+anchor_top = 0.54012346
+anchor_right = 0.6232639
+anchor_bottom = 0.67746913
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+text = "3"
+metadata/_edit_use_anchors_ = true
+
+[node name="confirm_panel" type="Panel" parent="file_select_modal" unique_id=631337066]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="confirm_panel_button" type="Button" parent="file_select_modal/confirm_panel" unique_id=2146509726]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="confirm_container" type="Panel" parent="file_select_modal/confirm_panel" unique_id=24039360]
+layout_mode = 0
+anchor_left = 0.16059028
+anchor_top = 0.12191358
+anchor_right = 0.8333333
+anchor_bottom = 0.79320985
+theme_override_styles/panel = SubResource("StyleBoxFlat_ww4kh")
+metadata/_edit_use_anchors_ = true
+
+[node name="title_text" type="RichTextLabel" parent="file_select_modal/confirm_panel/confirm_container" unique_id=1811279905]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 81.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "delete file 1?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="body_text" type="RichTextLabel" parent="file_select_modal/confirm_panel/confirm_container" unique_id=707262603]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -146.5
+offset_bottom = 91.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Are you sure you want to [action] file [slot]?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="confirm_button" type="Button" parent="file_select_modal/confirm_panel/confirm_container" unique_id=1481038069]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.59354836
+anchor_top = 0.71034485
+anchor_right = 0.97161293
+anchor_bottom = 0.9149425
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+text = "Confirm"
+metadata/_edit_use_anchors_ = true
+
+[node name="cancel_button" type="Button" parent="file_select_modal/confirm_panel/confirm_container" unique_id=1185483074]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08903222
+anchor_top = 0.71034485
+anchor_right = 0.46709678
+anchor_bottom = 0.9149425
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+text = "Cancel"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="buttons_container/file_buttons_container/file_1_button" to="." method="_on_file_1_button_pressed"]
-[connection signal="focus_entered" from="buttons_container/file_buttons_container/file_2_button" to="." method="_on_file_2_button_focus_entered"]
-[connection signal="mouse_entered" from="buttons_container/file_buttons_container/file_2_button" to="." method="_on_file_2_button_mouse_entered"]
 [connection signal="pressed" from="buttons_container/file_buttons_container/file_2_button" to="." method="_on_file_2_button_pressed"]
-[connection signal="focus_entered" from="buttons_container/file_buttons_container/file_3_button" to="." method="_on_file_3_button_focus_entered"]
-[connection signal="mouse_entered" from="buttons_container/file_buttons_container/file_3_button" to="." method="_on_file_3_button_mouse_entered"]
 [connection signal="pressed" from="buttons_container/file_buttons_container/file_3_button" to="." method="_on_file_3_button_pressed"]
 [connection signal="pressed" from="buttons_container/back_button" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="modal_panel/modal_panel_button" to="." method="_on_modal_panel_button_pressed"]
+[connection signal="pressed" from="file_control_modal_panel/modal_panel_button" to="." method="_on_modal_panel_button_pressed"]
+[connection signal="pressed" from="file_info_panel/file_control_buttons/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="file_info_panel/file_control_buttons/copy_button" to="." method="_on_copy_button_pressed"]
+[connection signal="pressed" from="file_info_panel/file_control_buttons/delete_button" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="file_select_modal/file_select_modal_button" to="." method="_on_file_select_modal_button_pressed"]
+[connection signal="pressed" from="file_select_modal/file_select_1_button" to="." method="_on_file_select_1_button_pressed"]
+[connection signal="pressed" from="file_select_modal/file_select_2_button" to="." method="_on_file_select_2_button_pressed"]
+[connection signal="pressed" from="file_select_modal/file_select_3_button" to="." method="_on_file_select_3_button_pressed"]
+[connection signal="pressed" from="file_select_modal/confirm_panel/confirm_panel_button" to="." method="_on_confirm_panel_button_pressed"]
+[connection signal="pressed" from="file_select_modal/confirm_panel/confirm_container/cancel_button" to="." method="_on_cancel_button_pressed"]
