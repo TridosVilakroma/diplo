@@ -40,6 +40,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wklqy"]
+bg_color = Color(0, 0, 0, 0.6862745)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [node name="PlayScene" type="Control" unique_id=528763970]
 layout_mode = 3
 anchors_preset = 15
@@ -91,6 +98,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="file_buttons_container" type="Control" parent="buttons_container" unique_id=560284001]
 layout_mode = 1
@@ -208,4 +216,54 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
+[node name="file_info_panel" type="Panel" parent="." unique_id=901676143]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6727431
+anchor_top = 0.18981482
+anchor_right = 0.9930556
+anchor_bottom = 0.9490741
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wklqy")
+metadata/_edit_use_anchors_ = true
+
+[node name="file_number_hint_Text" type="RichTextLabel" parent="file_info_panel" unique_id=1645830758]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+horizontal_alignment = 1
+
+[node name="file_info_text" type="RichTextLabel" parent="file_info_panel" unique_id=740317155]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[b]Select a Save file
+to play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="button_container" type="Control" parent="file_info_panel" unique_id=2115035824]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[connection signal="focus_entered" from="buttons_container/file_buttons_container/file_1_button" to="." method="_on_file_1_button_focus_entered"]
+[connection signal="mouse_entered" from="buttons_container/file_buttons_container/file_1_button" to="." method="_on_file_1_button_mouse_entered"]
+[connection signal="focus_entered" from="buttons_container/file_buttons_container/file_2_button" to="." method="_on_file_2_button_focus_entered"]
+[connection signal="mouse_entered" from="buttons_container/file_buttons_container/file_2_button" to="." method="_on_file_2_button_mouse_entered"]
+[connection signal="focus_entered" from="buttons_container/file_buttons_container/file_3_button" to="." method="_on_file_3_button_focus_entered"]
+[connection signal="mouse_entered" from="buttons_container/file_buttons_container/file_3_button" to="." method="_on_file_3_button_mouse_entered"]
 [connection signal="pressed" from="buttons_container/back_button" to="." method="_on_back_button_pressed"]

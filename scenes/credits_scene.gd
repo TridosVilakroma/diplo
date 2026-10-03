@@ -15,5 +15,6 @@ func _ready() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	get_tree().root.get_child(1).animate_entry()
+	print(get_tree().root.get_children())
+	get_tree().root.get_node("MainMenu").animate_entry()
 	$".".queue_free()

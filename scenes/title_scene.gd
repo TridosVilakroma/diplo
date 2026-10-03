@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 			$title_panel,
 			"global_position:x",
 			get_viewport_rect().size[0]-$title_panel.size[0]-get_viewport_rect().size[0]/40,
-			1)
+			.65)
 		await title_move_anim.finished
 		get_tree().root.add_child(load("res://scenes/main_menu.tscn").instantiate())
 
