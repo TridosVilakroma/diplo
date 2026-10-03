@@ -4,7 +4,6 @@ var save_slot:String
 
 
 func repair_save_tree():
-	print('hghghghghghg')
 	if not DirAccess.dir_exists_absolute("user://Saves"):
 		DirAccess.make_dir_absolute("user://Saves")
 	if not FileAccess.file_exists("user://Saves/file_1.save"):

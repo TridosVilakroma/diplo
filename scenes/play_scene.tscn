@@ -216,6 +216,23 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
+[node name="modal_panel" type="Panel" parent="." unique_id=1275691777]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="modal_panel_button" type="Button" parent="modal_panel" unique_id=1869930035]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="file_info_panel" type="Panel" parent="." unique_id=901676143]
 layout_mode = 1
 anchors_preset = -1
@@ -262,8 +279,12 @@ mouse_filter = 2
 
 [connection signal="focus_entered" from="buttons_container/file_buttons_container/file_1_button" to="." method="_on_file_1_button_focus_entered"]
 [connection signal="mouse_entered" from="buttons_container/file_buttons_container/file_1_button" to="." method="_on_file_1_button_mouse_entered"]
+[connection signal="pressed" from="buttons_container/file_buttons_container/file_1_button" to="." method="_on_file_1_button_pressed"]
 [connection signal="focus_entered" from="buttons_container/file_buttons_container/file_2_button" to="." method="_on_file_2_button_focus_entered"]
 [connection signal="mouse_entered" from="buttons_container/file_buttons_container/file_2_button" to="." method="_on_file_2_button_mouse_entered"]
+[connection signal="pressed" from="buttons_container/file_buttons_container/file_2_button" to="." method="_on_file_2_button_pressed"]
 [connection signal="focus_entered" from="buttons_container/file_buttons_container/file_3_button" to="." method="_on_file_3_button_focus_entered"]
 [connection signal="mouse_entered" from="buttons_container/file_buttons_container/file_3_button" to="." method="_on_file_3_button_mouse_entered"]
+[connection signal="pressed" from="buttons_container/file_buttons_container/file_3_button" to="." method="_on_file_3_button_pressed"]
 [connection signal="pressed" from="buttons_container/back_button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="modal_panel/modal_panel_button" to="." method="_on_modal_panel_button_pressed"]

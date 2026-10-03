@@ -6,6 +6,8 @@ func _ready() -> void:
 	animate_buttons()
 	initialize_file_info_panel()
 	loaded_saves=DataIO.get_save_slots_view()
+	$modal_panel.visible=false
+	$modal_panel.modulate.a=0
 
 
 func initialize_file_info_panel():
@@ -83,12 +85,14 @@ func _on_back_button_pressed() -> void:
 	$".".queue_free()
 
 
+########## button hovered or focused behaviors ##########
+
+
 func set_file_info(file_number:int):
 	var prebuilt_str:String
 	prebuilt_str="[u]          Save File "+str(file_number)+"          "
 	$file_info_panel/file_number_hint_Text.text=prebuilt_str
 	$file_info_panel/file_info_text.text=DataIO.decode_view(loaded_saves.get("file_"+str(file_number)))
-
 
 func _on_file_1_button_focus_entered() -> void:
 	set_file_info(1)
@@ -112,3 +116,29 @@ func _on_file_3_button_focus_entered() -> void:
 
 func _on_file_3_button_mouse_entered() -> void:
 	set_file_info(3)
+
+
+########## button actions ##########
+
+
+func _on_file_1_button_pressed() -> void:
+	animate_modal_in()
+
+
+func _on_file_2_button_pressed() -> void:
+	animate_modal_in()
+
+
+func _on_file_3_button_pressed() -> void:
+	animate_modal_in()
+
+
+func animate_modal_in():
+	$modal_panel.visible=true
+	var anim:Tween=create_tween()
+	anim.tween_property($modal_panel,"modulate:a",1,.15)
+
+
+func _on_modal_panel_button_pressed() -> void:
+	$modal_panel.visible=false
+	$modal_panel.modulate.a=0
