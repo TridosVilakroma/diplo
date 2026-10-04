@@ -4,6 +4,7 @@ var loaded_saves:Dictionary
 var current_file:String
 var copy_flag:bool=false
 var delete_flag:bool=false
+var context_file:int
 
 
 func _ready() -> void:
@@ -190,6 +191,7 @@ func open_file_select_modal():
 
 func open_confirm_panel_with_context(file:int):
 	$file_select_modal/confirm_panel.visible=true
+	context_file=file
 	
 	var _mode="Delete " if delete_flag else "Copy "
 	var title_text:String=_mode+"file "+str(file)+"?"
@@ -250,9 +252,11 @@ func _on_cancel_button_pressed() -> void:
 func _on_confirm_button_pressed() -> void:
 	if delete_flag:
 		DataIO.delete_file(current_file.substr(len(str(current_file))-1,1))
+		GlobalFlags.toast("Deleted save "+current_file.substr(len(str(current_file))-1,1)+" successfully!")
 	elif copy_flag:
-		pass
-		
+		DataIO.copy_save_file(int(current_file.substr(len(str(current_file))-1,1)),context_file)
+		loaded_saves=DataIO.get_save_slots_view()
+		GlobalFlags.toast("Copied save "+current_file.substr(len(str(current_file))-1,1)+" on to save "+str(context_file)+" successfully!")
 	
 	_on_confirm_panel_button_pressed()
 	_on_file_select_modal_button_pressed()

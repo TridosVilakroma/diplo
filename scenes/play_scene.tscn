@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cpt84oanugwfr" path="res://assets/title_screen_background_1.png" id="2_que2y"]
 [ext_resource type="Texture2D" uid="uid://brolwxplikmnn" path="res://assets/copy_icon.png" id="3_kdvgv"]
 [ext_resource type="Texture2D" uid="uid://cgsy5r1m4plw6" path="res://assets/trash_icon.png" id="4_ief5h"]
+[ext_resource type="PackedScene" uid="uid://dgs5tvjj8kfex" path="res://utils/modular scenes/toast_notification.tscn" id="5_ief5h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whpc1"]
 bg_color = Color(0.5254902, 0.21176471, 0.16470589, 0.69411767)
@@ -241,6 +242,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
 text = "Back"
 
 [node name="file_control_modal_panel" type="Panel" parent="." unique_id=1275691777]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -518,6 +520,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
 theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
 text = "Cancel"
 metadata/_edit_use_anchors_ = true
+
+[node name="ToastNotification" parent="." unique_id=1626782817 instance=ExtResource("5_ief5h")]
+layout_mode = 1
 
 [connection signal="pressed" from="buttons_container/file_buttons_container/file_1_button" to="." method="_on_file_1_button_pressed"]
 [connection signal="pressed" from="buttons_container/file_buttons_container/file_2_button" to="." method="_on_file_2_button_pressed"]

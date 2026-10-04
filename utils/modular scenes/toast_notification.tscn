@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dgs5tvjj8kfex"]
+
+[ext_resource type="Script" uid="uid://mepck1bmyd76" path="res://utils/modular scenes/toast_notification.gd" id="1_sbcqr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p12po"]
+bg_color = Color(0, 0, 0, 0.7254902)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ToastNotification" type="Control" unique_id=1626782817]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_sbcqr")
+scroll_speed = 250.0
+
+[node name="clipping_node" type="Control" parent="." unique_id=960225420]
+clip_children = 1
+layout_mode = 1
+anchor_right = 0.5277778
+anchor_bottom = 0.24537037
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="clipping_node" unique_id=1933845697]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.9868421
+anchor_top = 0.10062893
+anchor_right = -0.08223684
+anchor_bottom = 0.35220125
+theme_override_styles/panel = SubResource("StyleBoxFlat_p12po")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="clipping_node/Panel" unique_id=1226767485]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Toast Notification Message [Content]"
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1

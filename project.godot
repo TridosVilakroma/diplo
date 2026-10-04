@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DataIO="*uid://grusktyw6eva"
 ComFuncs="*uid://bt60qmoqa0owg"
+GlobalFlags="*uid://bvqoyfhbnmi20"
 
 [display]
 

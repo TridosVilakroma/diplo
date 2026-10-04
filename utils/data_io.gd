@@ -91,3 +91,15 @@ func decode_view(view:Dictionary):
 func delete_file(file:String):
 	var dir_access=DirAccess.open("user://")
 	dir_access.remove("Saves/file_%s.save" % file)
+	repair_save_tree()
+
+func copy_save_file(file_to_copy:int,file_to_overwrite:int):
+	var from_path = "user://Saves/file_%d.save" %file_to_copy
+	var to_path = "user://Saves/file_%d.save" %file_to_overwrite
+	
+	var error = DirAccess.copy_absolute(from_path, to_path)
+	
+	if error == OK:
+		print("File copied successfully!")
+	else:
+		print("Failed to copy file. Error code: ", error)
