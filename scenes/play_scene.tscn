@@ -102,7 +102,6 @@ anchor_top = 0.04
 anchor_right = 0.9782986
 anchor_bottom = 0.16512346
 theme_override_styles/panel = SubResource("StyleBoxFlat_whpc1")
-metadata/_edit_use_anchors_ = true
 
 [node name="title_text" type="RichTextLabel" parent="title_panel" unique_id=17782750]
 layout_mode = 1
@@ -150,7 +149,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
 theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
-metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="buttons_container/file_buttons_container/file_1_button" unique_id=779498017]
 layout_mode = 1
@@ -213,7 +211,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
 theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
-metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="buttons_container/file_buttons_container/file_3_button" unique_id=1211866811]
 layout_mode = 1
@@ -242,7 +239,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
 theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
 text = "Back"
-metadata/_edit_use_anchors_ = true
 
 [node name="file_control_modal_panel" type="Panel" parent="." unique_id=1275691777]
 layout_mode = 1
@@ -272,7 +268,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wklqy")
-metadata/_edit_use_anchors_ = true
 
 [node name="file_number_hint_Text" type="RichTextLabel" parent="file_info_panel" unique_id=1645830758]
 layout_mode = 1
@@ -308,7 +303,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_p12po")
-metadata/_edit_use_anchors_ = true
 
 [node name="start_button" type="Button" parent="file_info_panel/file_control_buttons" unique_id=1028052870]
 layout_mode = 1
@@ -323,7 +317,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_kdvgv")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ief5h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btd5q")
 text = "Start New Game"
-metadata/_edit_use_anchors_ = true
 
 [node name="copy_button" type="TextureButton" parent="file_info_panel/file_control_buttons" unique_id=1291235132]
 layout_mode = 0
@@ -333,7 +326,6 @@ anchor_right = 0.7344173
 anchor_bottom = 0.75
 texture_normal = ExtResource("3_kdvgv")
 stretch_mode = 4
-metadata/_edit_use_anchors_ = true
 
 [node name="delete_button" type="TextureButton" parent="file_info_panel/file_control_buttons" unique_id=773199712]
 layout_mode = 0
@@ -343,9 +335,9 @@ anchor_right = 0.9214092
 anchor_bottom = 0.75
 texture_normal = ExtResource("4_ief5h")
 stretch_mode = 4
-metadata/_edit_use_anchors_ = true
 
 [node name="file_select_modal" type="Panel" parent="." unique_id=1226409175]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -439,6 +431,7 @@ text = "3"
 metadata/_edit_use_anchors_ = true
 
 [node name="confirm_panel" type="Panel" parent="file_select_modal" unique_id=631337066]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -539,4 +532,5 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="file_select_modal/file_select_2_button" to="." method="_on_file_select_2_button_pressed"]
 [connection signal="pressed" from="file_select_modal/file_select_3_button" to="." method="_on_file_select_3_button_pressed"]
 [connection signal="pressed" from="file_select_modal/confirm_panel/confirm_panel_button" to="." method="_on_confirm_panel_button_pressed"]
+[connection signal="pressed" from="file_select_modal/confirm_panel/confirm_container/confirm_button" to="." method="_on_confirm_button_pressed"]
 [connection signal="pressed" from="file_select_modal/confirm_panel/confirm_container/cancel_button" to="." method="_on_cancel_button_pressed"]

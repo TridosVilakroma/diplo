@@ -60,24 +60,24 @@ func animate_file_buttons():
 	_move_anim_1.set_trans(Tween.TRANS_SINE)
 	_move_anim_1.tween_property(
 		$buttons_container/file_buttons_container/file_1_button,
-		'position',
-		Vector2(125,150),
+		'global_position',
+		ComFuncs.scale_position(Vector2(125,150)),
 		.5)
 	
 	var _move_anim_2:Tween=create_tween()
 	_move_anim_2.set_trans(Tween.TRANS_SINE)
 	_move_anim_2.tween_property(
 		$buttons_container/file_buttons_container/file_2_button,
-		'position',
-		Vector2(275,250),
+		'global_position',
+		ComFuncs.scale_position(Vector2(275,250)),
 		.5)
 	
 	var _move_anim_3:Tween=create_tween()
 	_move_anim_3.set_trans(Tween.TRANS_SINE)
 	_move_anim_3.tween_property(
 		$buttons_container/file_buttons_container/file_3_button,
-		'position',
-		Vector2(425,350),
+		'global_position',
+		ComFuncs.scale_position(Vector2(425,350)),
 		.5)
 	
 	
@@ -92,7 +92,7 @@ func animate_file_buttons():
 		anim_2.set_trans(Tween.TRANS_SINE)
 		anim_2.tween_property(_button.get_child(0),"theme_override_colors/default_color:a",1,.2)
 	
-	await get_tree().create_timer(.25).timeout
+	await get_tree().create_timer(.5).timeout
 	ComFuncs.set_anchors_to_current_ratio($buttons_container/file_buttons_container/file_1_button)
 	ComFuncs.set_anchors_to_current_ratio($buttons_container/file_buttons_container/file_2_button)
 	ComFuncs.set_anchors_to_current_ratio($buttons_container/file_buttons_container/file_3_button)
@@ -245,3 +245,15 @@ func _on_cancel_button_pressed() -> void:
 	$file_select_modal/confirm_panel.visible=false
 	if delete_flag:
 		_on_file_select_modal_button_pressed()
+
+
+func _on_confirm_button_pressed() -> void:
+	if delete_flag:
+		DataIO.delete_file(current_file.substr(len(str(current_file))-1,1))
+	elif copy_flag:
+		pass
+		
+	
+	_on_confirm_panel_button_pressed()
+	_on_file_select_modal_button_pressed()
+	_on_modal_panel_button_pressed()
