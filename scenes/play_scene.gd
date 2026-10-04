@@ -91,7 +91,11 @@ func animate_file_buttons():
 		var anim_2:Tween=create_tween()
 		anim_2.set_trans(Tween.TRANS_SINE)
 		anim_2.tween_property(_button.get_child(0),"theme_override_colors/default_color:a",1,.2)
-
+	
+	await get_tree().create_timer(.25).timeout
+	ComFuncs.set_anchors_to_current_ratio($buttons_container/file_buttons_container/file_1_button)
+	ComFuncs.set_anchors_to_current_ratio($buttons_container/file_buttons_container/file_2_button)
+	ComFuncs.set_anchors_to_current_ratio($buttons_container/file_buttons_container/file_3_button)
 
 func _on_back_button_pressed() -> void:
 	get_tree().root.get_node("MainMenu").animate_entry()
@@ -150,11 +154,13 @@ func add_file_control_buttons_with_context(file:int):
 		$file_info_panel/file_control_buttons/delete_button.visible=true
 		$file_info_panel/file_control_buttons/start_button.text="Load Save "+str(file)
 		$file_info_panel/file_control_buttons/start_button.position=Vector2(32,11)
+		ComFuncs.set_anchors_to_current_ratio($file_info_panel/file_control_buttons/start_button)
 	else:
 		$file_info_panel/file_control_buttons/copy_button.visible=false
 		$file_info_panel/file_control_buttons/delete_button.visible=false
 		$file_info_panel/file_control_buttons/start_button.text="Start New Game"
 		$file_info_panel/file_control_buttons/start_button.position=Vector2(111,11)
+		ComFuncs.set_anchors_to_current_ratio($file_info_panel/file_control_buttons/start_button)
 		
 	
 
@@ -171,6 +177,15 @@ func _on_modal_panel_button_pressed() -> void:
 
 func open_file_select_modal():
 	$file_select_modal.visible=true
+	$file_select_modal/file_select_1_button.visible=true
+	$file_select_modal/file_select_2_button.visible=true
+	$file_select_modal/file_select_3_button.visible=true
+	var focused_file:int
+	focused_file=int(current_file.substr(len(str(current_file))-1,1))
+	match focused_file:
+		1 : $file_select_modal/file_select_1_button.visible=false
+		2 : $file_select_modal/file_select_2_button.visible=false
+		3 : $file_select_modal/file_select_3_button.visible=false
 
 
 func open_confirm_panel_with_context(file:int):
@@ -211,6 +226,7 @@ func _on_copy_button_pressed() -> void:
 func _on_delete_button_pressed() -> void:
 	delete_flag=true
 	open_file_select_modal()
+	open_confirm_panel_with_context(int(current_file.substr(len(str(current_file))-1,1)))
 
 
 func _on_file_select_modal_button_pressed() -> void:
@@ -221,7 +237,11 @@ func _on_file_select_modal_button_pressed() -> void:
 
 func _on_confirm_panel_button_pressed() -> void:
 	$file_select_modal/confirm_panel.visible=false
+	if delete_flag:
+		_on_file_select_modal_button_pressed()
 
 
 func _on_cancel_button_pressed() -> void:
 	$file_select_modal/confirm_panel.visible=false
+	if delete_flag:
+		_on_file_select_modal_button_pressed()

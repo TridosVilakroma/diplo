@@ -125,24 +125,21 @@ mouse_filter = 2
 
 [node name="credit_panel" type="Panel" parent="credit_container" unique_id=93862584]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -376.0
-offset_top = -182.0
-offset_right = 424.0
-offset_bottom = 154.0
+anchors_preset = -1
+anchor_left = 0.1736111
+anchor_top = 0.2191358
+anchor_right = 0.8680556
+anchor_bottom = 0.7376543
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_p12po")
+metadata/_edit_use_anchors_ = true
 
 [node name="title" type="RichTextLabel" parent="credit_container/credit_panel" unique_id=552663106]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
-offset_bottom = 61.0
+anchor_bottom = 0.18154761
 grow_horizontal = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/bold_font_size = 44
@@ -150,14 +147,14 @@ bbcode_enabled = true
 text = "[b][u]Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="left_body" type="RichTextLabel" parent="credit_container/credit_panel" unique_id=730565131]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_top = 0.15178572
+anchor_right = 0.51875
 anchor_bottom = 1.0
-offset_top = 51.0
-offset_right = -385.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -174,14 +171,15 @@ Tristan Ross
 Tristan Ross
 Caleb Stockwell"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="right_body" type="RichTextLabel" parent="credit_container/credit_panel" unique_id=1658096721]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.52625
+anchor_top = 0.15178572
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 421.0
-offset_top = 51.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -199,5 +197,6 @@ MIT License
 
 [font_size=10]© 2026 Potion Forge[/font_size]"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="buttons_container/back_button" to="." method="_on_back_button_pressed"]
