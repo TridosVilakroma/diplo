@@ -24,7 +24,7 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().root.add_child(load("res://scenes/settings_scene.tscn").instantiate())
 
 
 func _on_credit_button_pressed() -> void:

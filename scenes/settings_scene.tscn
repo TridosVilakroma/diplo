@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ihr1feae72e7"]
 
+[ext_resource type="Script" uid="uid://dov7rk73qo87r" path="res://scenes/settings_scene.gd" id="1_5jacn"]
 [ext_resource type="Texture2D" uid="uid://cpt84oanugwfr" path="res://assets/title_screen_background_1.png" id="1_kqt80"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whpc1"]
@@ -39,6 +40,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p12po"]
+bg_color = Color(0.9882353, 0.8509804, 0.57254905, 0.9411765)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="SettingsScene" type="Control" unique_id=528763970]
 layout_mode = 3
 anchors_preset = 15
@@ -46,6 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5jacn")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1771839188]
 layout_mode = 1
@@ -58,6 +67,7 @@ texture = ExtResource("1_kqt80")
 expand_mode = 1
 
 [node name="title_panel" type="Panel" parent="." unique_id=215350088]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.535
@@ -90,57 +100,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="play_button" type="Button" parent="buttons_container" unique_id=286529846]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.06857639
-anchor_top = 0.13580246
-anchor_right = 0.32291666
-anchor_bottom = 0.27314815
-offset_left = 1.0
-offset_top = -7.9999924
-offset_right = 1.0
-offset_bottom = -8.0
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
-theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
-text = "Play"
-metadata/_edit_use_anchors_ = true
-
-[node name="settings_button" type="Button" parent="buttons_container" unique_id=525872938]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.06944445
-anchor_top = 0.33950618
-anchor_right = 0.3237847
-anchor_bottom = 0.47685185
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
-theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
-text = "Settings"
-metadata/_edit_use_anchors_ = true
-
-[node name="credit_button" type="Button" parent="buttons_container" unique_id=442073668]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.06944445
-anchor_top = 0.5555556
-anchor_right = 0.3237847
-anchor_bottom = 0.69290125
-offset_top = -3.0517578e-05
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
-theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
-text = "Credits"
-metadata/_edit_use_anchors_ = true
-
-[node name="quit_button" type="Button" parent="buttons_container" unique_id=2023833622]
+[node name="back_button" type="Button" parent="buttons_container" unique_id=2023833622]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.06944445
@@ -152,5 +112,41 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
 theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
-text = "Quit"
+text = "Back"
 metadata/_edit_use_anchors_ = true
+
+[node name="settings_container" type="Control" parent="." unique_id=111328753]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="settings_panel" type="Panel" parent="settings_container" unique_id=93862584]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.013888889
+anchor_top = 0.021604938
+anchor_right = 0.9861111
+anchor_bottom = 0.73765427
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p12po")
+metadata/_edit_use_anchors_ = true
+
+[node name="title" type="RichTextLabel" parent="settings_container/settings_panel" unique_id=552663106]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.18154761
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_font_size = 44
+bbcode_enabled = true
+text = "[b][u]  Settings  "
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="buttons_container/back_button" to="." method="_on_back_button_pressed"]

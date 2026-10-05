@@ -103,3 +103,16 @@ func copy_save_file(file_to_copy:int,file_to_overwrite:int):
 		print("File copied successfully!")
 	else:
 		print("Failed to copy file. Error code: ", error)
+
+
+############################### SETTINGS HANDLER ###############################
+
+func load_config_file():
+	var config = ConfigFile.new()
+	# Load data from a file.
+	var err = config.load("user://data/settings.ini")
+
+	# If the file didn't load, ignore it.
+	if err != OK:
+		printerr(err)
+		return
