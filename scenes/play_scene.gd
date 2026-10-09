@@ -252,11 +252,11 @@ func _on_cancel_button_pressed() -> void:
 func _on_confirm_button_pressed() -> void:
 	if delete_flag:
 		DataIO.delete_file(current_file.substr(len(str(current_file))-1,1))
-		GlobalFlags.toast("Deleted save "+current_file.substr(len(str(current_file))-1,1)+" successfully!")
+		GameManager.toast("Deleted save "+current_file.substr(len(str(current_file))-1,1)+" successfully!")
 	elif copy_flag:
 		DataIO.copy_save_file(int(current_file.substr(len(str(current_file))-1,1)),context_file)
 		loaded_saves=DataIO.get_save_slots_view()
-		GlobalFlags.toast("Copied save "+current_file.substr(len(str(current_file))-1,1)+" on to save "+str(context_file)+" successfully!")
+		GameManager.toast("Copied save "+current_file.substr(len(str(current_file))-1,1)+" on to save "+str(context_file)+" successfully!")
 	
 	_on_confirm_panel_button_pressed()
 	_on_file_select_modal_button_pressed()

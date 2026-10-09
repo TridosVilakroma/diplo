@@ -13,7 +13,7 @@ var pushed:bool=false
 
 func _ready() -> void:
 	$clipping_node.clip_contents=true
-	GlobalFlags.toast_notification.connect(push)
+	GameManager.toast_notification.connect(push)
 
 func _process(delta: float) -> void:
 	if pushed:scroll_text(delta)

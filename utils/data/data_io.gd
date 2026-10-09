@@ -3,6 +3,7 @@ extends Node
 var save_slot:String
 
 
+
 func repair_save_tree():
 	if not DirAccess.dir_exists_absolute("user://Saves"):
 		DirAccess.make_dir_absolute("user://Saves")
@@ -107,12 +108,39 @@ func copy_save_file(file_to_copy:int,file_to_overwrite:int):
 
 ############################### SETTINGS HANDLER ###############################
 
-func load_config_file():
-	var config = ConfigFile.new()
-	# Load data from a file.
-	var err = config.load("user://data/settings.ini")
+func load_config_file()->ConfigFile:
+	# attempts to load an existing settings file,
+	# if the file does not exist or fails to load
+	# a new settings object will be created and used.
+	# will attempt to write settings to file.
 
-	# If the file didn't load, ignore it.
-	if err != OK:
-		printerr(err)
-		return
+	if not DirAccess.dir_exists_absolute("user://data"):
+		DirAccess.make_dir_absolute("user://data")
+	if FileAccess.file_exists("user://data/settings.ini"):
+		var config = ConfigFile.new()
+		var err = config.load("user://data/settings.ini")
+		if err == OK:
+			return config
+		else:
+			printerr(err)
+			return build_settings_file()
+	else:
+		return build_settings_file()
+
+
+func build_settings_file()->ConfigFile:
+	var config = ConfigFile.new()
+	
+	#sound settings
+	config.set_value("Audio","master",1.0)
+	config.set_value("Audio","bgm",1.0)
+	config.set_value("Audio","effects",1.0)
+	
+	#window
+	config.set_value("Window","mode","windowed")
+	config.set_value("Window","mode","fullscreen")
+	
+	config.set_value("Window","v-sync",true)
+	
+	config.save("user://data/settings.ini")
+	return config

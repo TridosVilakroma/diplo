@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 DataIO="*uid://grusktyw6eva"
 ComFuncs="*uid://bt60qmoqa0owg"
 GlobalFlags="*uid://bvqoyfhbnmi20"
+GameManager="*uid://bhksin75i4p5"
 
 [display]
 

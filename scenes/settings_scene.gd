@@ -1,8 +1,9 @@
 extends Control
 
+var settings:ConfigFile
 
 func _ready() -> void:
-	DataIO.load_config_file()
+	settings=GameManager.settings
 	var _button_pause:float=0.0
 	for _button:Button in $buttons_container.get_children():
 		_button_pause+=0.0
